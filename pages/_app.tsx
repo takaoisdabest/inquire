@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					</Link>
 					<Link
 						href="/signup"
-						className="solid-box-shadow font-mono font-bold bg-black text-white hover:text-accent transition-colors duration-[0.1s] px-2 py-1"
+						className="solid-box-shadow font-mono font-bold bg-black text-white hover:text-accent px-2 py-1"
 					>
 						SIGN UP FREE
 					</Link>

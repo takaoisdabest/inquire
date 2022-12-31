@@ -35,7 +35,7 @@ body {
 }
 
 .solid-box-shadow {
-	transition: box-shadow 0.1s linear;
+	transition: all 0.1s linear;
 }
 
 .solid-box-shadow:hover {
