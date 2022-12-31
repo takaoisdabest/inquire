@@ -9,6 +9,10 @@
 	font-style: normal;
 }
 
+:root {
+	--color-accent: #6c63ff;
+}
+
 * {
 	box-sizing: border-box;
 }
@@ -21,6 +25,11 @@ body {
 	margin: 0;
 }
 
-a {
-	text-decoration: none;
+.solid-shadow {
+	transition: text-shadow 0.1s linear;
+}
+
+.solid-shadow:hover {
+	transition: text-shadow 0.1s linear;
+	text-shadow: -3px 2px 0 var(--color-accent);
 }
