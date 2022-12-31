@@ -10,14 +10,14 @@ export default function App({ Component, pageProps }: AppProps) {
 					window.pageYOffset > 0 ? "drop-shadow-md" : ""
 				} bg-white md:px-6`}
 			>
-				<Link href="/" className="solid-shadow font-righteous font-bold text-2xl md:text-4xl">
+				<Link href="/" className="solid-text-shadow font-righteous font-bold text-2xl md:text-4xl">
 					inquire
 				</Link>
 				<div className="flex gap-4 items-center">
 					<Link href="/login" className="font-mono font-bold hover:underline">
 						login
 					</Link>
-					<Link href="/signup" className="font-mono font-bold bg-accent text-white px-2 py-1">
+					<Link href="/signup" className="solid-box-shadow font-mono font-bold bg-black text-white px-2 py-1">
 						SIGN UP FREE
 					</Link>
 				</div>

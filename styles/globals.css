@@ -25,11 +25,22 @@ body {
 	margin: 0;
 }
 
-.solid-shadow {
+.solid-text-shadow {
 	transition: text-shadow 0.1s linear;
 }
 
-.solid-shadow:hover {
+.solid-text-shadow:hover {
 	transition: text-shadow 0.1s linear;
 	text-shadow: -3px 2px 0 var(--color-accent);
+}
+
+.solid-box-shadow {
+	transition: box-shadow 0.1s linear;
+}
+
+.solid-box-shadow:hover {
+	transition: all 0.1s linear;
+	-webkit-box-shadow: -5px 5px 0px 0px var(--color-accent);
+	-moz-box-shadow: -5px 5px 0px 0px var(--color-accent);
+	box-shadow: -5px 5px 0px 0px var(--color-accent);
 }
