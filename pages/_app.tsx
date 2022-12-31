@@ -1,13 +1,31 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
+	const [showNavbarShadow, setShowNavbarShadow] = useState(false);
+
+	const toggleNavbarShadow = () => {
+		if (window.pageYOffset > 0) {
+			setShowNavbarShadow(true);
+		} else {
+			setShowNavbarShadow(false);
+		}
+	};
+
+	useEffect(() => {
+		if (typeof window !== undefined) {
+			window.addEventListener("scroll", toggleNavbarShadow);
+			return () => window.removeEventListener("scroll", toggleNavbarShadow);
+		}
+	});
+
 	return (
 		<>
 			<nav
 				className={`fixed w-full flex justify-between items-center px-2 py-4 ${
-					window.pageYOffset > 0 ? "drop-shadow-md" : ""
+					showNavbarShadow ? "drop-shadow-md" : ""
 				} bg-white md:px-6`}
 			>
 				<Link href="/" className="solid-text-shadow font-righteous font-bold text-2xl md:text-4xl">
