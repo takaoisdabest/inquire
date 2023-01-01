@@ -44,7 +44,18 @@ export default function App({ Component, pageProps }: AppProps) {
 					</Link>
 				</div>
 			</nav>
+
 			<Component {...pageProps} />
+
+			<footer className="flex justify-center items-center bg-black text-white p-2">
+				<p className="flex gap-3 text-xs">
+					<span className="font-righteous text-accent font-bold">inquire</span>
+					<span className="font-extralight">-</span>
+					<span className="font-extralight">Saheb Khadem</span>
+					<span className="font-extralight">-</span>
+					<span className="font-extralight">2023</span>
+				</p>
+			</footer>
 		</div>
 	);
 }
