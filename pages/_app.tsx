@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<nav
-				className={`fixed w-full flex justify-between items-center px-2 py-4 ${
+				className={`fixed w-full flex justify-between items-center p-4 ${
 					showNavbarShadow ? "drop-shadow-md" : ""
 				} bg-white md:px-6`}
 			>
@@ -37,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					</Link>
 					<Link
 						href="/signup"
-						className="solid-box-shadow font-mono font-bold bg-black text-white hover:text-accent px-2 py-1"
+						className="solid-box-shadow font-mono font-bold bg-black text-white hover:text-accent p-2"
 					>
 						SIGN UP FREE
 					</Link>
