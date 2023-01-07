@@ -1,12 +1,43 @@
-import { MouseEventHandler, useState } from "react";
-import { UseFormRegister } from "react-hook-form";
-import { UseFormGetValues } from "react-hook-form/dist/types";
+import { MouseEventHandler } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// Types
-import { User } from "../../types/User";
+
+type NameInputProps = {
+	register: any;
+	label?: string;
+	error?: string;
+};
+
+export function NameInput({ register, label = "Name", error = "" }: NameInputProps) {
+	return (
+		<div className="relative w-full flex flex-col-reverse">
+			{error.length ? <p className="text-xs font-bold text-red-600 py-1">{error}</p> : null}
+
+			<input
+				type="text"
+				id="name"
+				{...register("name")}
+				placeholder="Username..."
+				className={`peer w-full border py-3 pl-3 pr-12 outline-none outline-offset-0 ${
+					error.length > 0
+						? "border-red-600 outline-red-600"
+						: "border-gray-400 focus:outline-2 focus:outline-accent focus:border-accent"
+				} transition-all duration-100`}
+			/>
+
+			<label
+				htmlFor="name"
+				className={`select-none font-mono font-bold text-sm ${
+					error.length > 0 ? "text-red-600" : "text-gray-400 peer-focus:text-accent"
+				} transition-all duration-100`}
+			>
+				{label}
+			</label>
+		</div>
+	);
+}
 
 type EmailInputProps = {
-	register: UseFormRegister<User>;
+	register: any;
 	label?: string;
 	error?: string;
 };
@@ -42,7 +73,7 @@ export function EmailInput({ register, label = "Email", error = "" }: EmailInput
 
 type PasswordInputProps = {
 	label?: string;
-	register: UseFormRegister<User>;
+	register: any;
 	isVisible?: boolean;
 	passwordToggler?: MouseEventHandler<HTMLButtonElement>;
 	isConfirm?: boolean;
@@ -99,20 +130,18 @@ export function PasswordInput({
 }
 
 type ConfirmPasswordInputProps = {
+	register: any;
 	label?: string;
-	register: UseFormRegister<User>;
-	getValues: UseFormGetValues<User>;
 	isVisible: boolean;
+	error?: string;
 };
 
 export function ConfirmPasswordInput({
 	register,
-	getValues,
 	label = "Confirm password",
-	isVisible = false
+	isVisible = false,
+	error = ""
 }: ConfirmPasswordInputProps) {
-	const [error, setError] = useState("");
-
 	return (
 		<div className="relative w-full flex flex-col-reverse">
 			{error.length ? <p className="text-xs font-bold text-red-600 py-1">{error}</p> : null}
@@ -120,13 +149,7 @@ export function ConfirmPasswordInput({
 			<input
 				type={isVisible ? "text" : "password"}
 				id="confirmPassword"
-				{...register("confirmPassword", {
-					onChange() {
-						if (getValues("password") !== getValues("confirmPassword")) {
-							setError("Your passwords do not match");
-						}
-					}
-				})}
+				{...register("confirmPassword")}
 				placeholder="Confirm your password..."
 				className={`peer w-full border py-3 pl-3 pr-12" : "p-3"
 				outline-none outline-offset-0 ${
