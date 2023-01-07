@@ -51,7 +51,7 @@ export function EmailInput({ register, label = "Email", error = "" }: EmailInput
 				type="email"
 				id="email"
 				{...register("email")}
-				placeholder="Your email..."
+				placeholder="Email..."
 				className={`peer w-full border py-3 pl-3 pr-12 outline-none outline-offset-0 ${
 					error.length > 0
 						? "border-red-600 outline-red-600"
