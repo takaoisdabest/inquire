@@ -28,7 +28,6 @@ body {
 .solid-text-shadow {
 	transition: text-shadow 0.1s linear;
 }
-
 .solid-text-shadow:hover {
 	transition: text-shadow 0.1s linear;
 	text-shadow: -3px 2px 0 var(--color-accent);
@@ -37,10 +36,40 @@ body {
 .solid-box-shadow {
 	transition: all 0.1s linear;
 }
-
 .solid-box-shadow:hover {
 	transition: all 0.1s linear;
 	-webkit-box-shadow: -5px 5px 0px 0px var(--color-accent);
 	-moz-box-shadow: -5px 5px 0px 0px var(--color-accent);
 	box-shadow: -5px 5px 0px 0px var(--color-accent);
+}
+
+.input-box-shadow {
+	transition: all 0.1s linear;
+}
+
+.input-box-shadow:focus {
+	transition: all 0.1s linear;
+	-webkit-box-shadow: -5px 5px 0px 0px var(--color-accent);
+	-moz-box-shadow: -5px 5px 0px 0px var(--color-accent);
+	box-shadow: -5px 5px 0px 0px var(--color-accent);
+}
+
+::-moz-selection {
+	color: white;
+	background: var(--color-accent);
+	opacity: 0.75;
+}
+
+::selection {
+	color: white;
+	background: var(--color-accent);
+	opacity: 0.75;
+}
+
+/* Change the autofill backhround color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	-webkit-box-shadow: 0 0 0 30px white inset !important;
 }
