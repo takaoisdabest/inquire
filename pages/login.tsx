@@ -9,7 +9,6 @@ import { UserLogin, UserLoginSchema } from "../types/User";
 // Components
 import { EmailInput, PasswordInput } from "../components/ui/Input";
 import { Button, LinkButton } from "../components/ui/Button";
-import Link from "next/link";
 
 export default function login() {
 	const { register, handleSubmit, formState } = useForm<UserLogin>({
