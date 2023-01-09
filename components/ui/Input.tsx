@@ -103,7 +103,7 @@ export function PasswordInput({
 					id="password"
 					{...register("password")}
 					placeholder="Password..."
-					className={`w-full py-3 pl-3 pr-2 outline-none`}
+					className={`w-full py-3 pl-3 pr-0 outline-none`}
 				/>
 				<button
 					type="button"
@@ -151,7 +151,7 @@ export function ConfirmPasswordInput({
 				id="confirmPassword"
 				{...register("confirmPassword")}
 				placeholder="Confirm your password..."
-				className={`peer w-full border py-3 pl-3 pr-12" : "p-3"
+				className={`peer w-full border p-3
 				outline-none outline-offset-0 ${
 					error.length > 0
 						? "border-red-600 outline-red-600"
