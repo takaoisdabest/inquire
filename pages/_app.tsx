@@ -3,8 +3,12 @@ import type { AppProps } from "next/app";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
+// Components
+import MobileNav from "../components/ui/MobileNav";
+
 export default function App({ Component, pageProps }: AppProps) {
 	const [showNavbarShadow, setShowNavbarShadow] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	const toggleNavbarShadow = () => {
 		if (window.pageYOffset > 0) {
@@ -46,6 +50,8 @@ export default function App({ Component, pageProps }: AppProps) {
 			</nav>
 
 			<Component {...pageProps} />
+
+			{isLoggedIn && <MobileNav />}
 
 			<footer className="flex justify-center items-center bg-black text-white p-2">
 				<p className="flex gap-3 text-xs">
