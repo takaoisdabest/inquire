@@ -7,6 +7,7 @@ type ButtonProps = {
 	clickHandler?: MouseEventHandler<HTMLButtonElement>;
 	isLoading?: boolean;
 	disabled?: boolean;
+	title: string;
 	children?: ReactNode;
 };
 
@@ -16,6 +17,7 @@ export function Button({
 	clickHandler = () => {},
 	isLoading = false,
 	disabled = false,
+	title,
 	children
 }: ButtonProps) {
 	return (
@@ -28,6 +30,7 @@ export function Button({
 					: "bg-white text-black hover:bg-slate-100 hover:text-accent disabled:bg-slate-100 disabled:text-slate-400 disabled:hover:text-slate-400"
 			} transition-colors duration-100`}
 			disabled={disabled || isLoading === true}
+			title={title}
 		>
 			{children}
 		</button>
