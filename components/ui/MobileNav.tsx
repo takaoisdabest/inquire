@@ -38,7 +38,7 @@ function MobileNav() {
 						? "text-accent shadow-under"
 						: "hover:text-accent hover:shadow-under"
 				} transition-all duration-100`}
-				title="User settings page"
+				title="Account settings page"
 			>
 				<FaCog />
 			</Link>
