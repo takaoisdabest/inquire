@@ -53,10 +53,15 @@ export default function login() {
 					/>
 
 					<div className="w-full flex flex-col gap-4 justify-center items-stretch md:flex-row-reverse">
-						<Button type="submit" color="primary" clickHandler={() => console.log(formState)}>
+						<Button
+							type="submit"
+							color="primary"
+							clickHandler={() => console.log(formState)}
+							ariaLabel="sign up"
+						>
 							Sign Up
 						</Button>
-						<LinkButton color="secondary" href="/login">
+						<LinkButton color="secondary" href="/login" ariaLabel="login page">
 							Login
 						</LinkButton>
 					</div>

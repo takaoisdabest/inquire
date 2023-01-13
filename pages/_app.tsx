@@ -33,7 +33,11 @@ export default function App({ Component, pageProps }: AppProps) {
 					showNavbarShadow ? "drop-shadow-md" : ""
 				} bg-white md:px-6 md:justify-between`}
 			>
-				<Link href="/" className="solid-text-shadow font-righteous font-bold text-2xl md:text-4xl">
+				<Link
+					href="/"
+					className="solid-text-shadow font-righteous font-bold text-2xl md:text-4xl"
+					aria-label-label="home page"
+				>
 					inquire
 				</Link>
 				{isLoggedIn ? (
@@ -41,32 +45,28 @@ export default function App({ Component, pageProps }: AppProps) {
 						<Link
 							href="/u/name/dashboard"
 							className="font-mono font-bold hover:underline"
-							title="Dashboard page"
+							aria-label-label="dashboard page"
 						>
 							dashboard
 						</Link>
 						<Link
 							href="/u/name/settings"
 							className="font-mono font-bold hover:underline"
-							title="Account settings page"
+							aria-label-label="account settings page"
 						>
 							settings
 						</Link>
-						<Button title="Logout">logout</Button>
+						<Button ariaLabel="log out">logout</Button>
 					</div>
 				) : (
 					<div className="hidden gap-4 items-center md:flex">
-						<Link
-							href="/login"
-							className="font-mono font-bold hover:underline"
-							title="Log in to your account"
-						>
+						<Link href="/login" className="font-mono font-bold hover:underline" aria-label-label="log in">
 							login
 						</Link>
 						<Link
 							href="/signup"
 							className="solid-box-shadow font-mono font-bold bg-black text-white hover:text-accent p-2"
-							title="Create a new account for free"
+							aria-label-label="sign up"
 						>
 							SIGN UP FREE
 						</Link>
@@ -82,7 +82,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				<Link
 					href="/login"
 					className="flex justify-center items-center bg-accent text-white p-4 font-mono font-bold text-lg hover:underline md:hidden"
-					title="Log in to your account"
+					aria-label-label="log in"
 				>
 					Log in to start creating
 				</Link>

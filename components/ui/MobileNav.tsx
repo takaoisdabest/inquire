@@ -16,7 +16,7 @@ function MobileNav() {
 				className={`flex-1 flex flex-col justify-center items-center py-6 shadow-hidden hover:bg-slate-100 ${
 					router.pathname === `/` ? "text-accent shadow-under" : "hover:text-accent hover:shadow-under"
 				} transition-all duration-100`}
-				title="Home page"
+				aria-label="home page"
 			>
 				<FaHome />
 			</Link>
@@ -27,7 +27,7 @@ function MobileNav() {
 						? "text-accent shadow-under"
 						: "hover:text-accent hover:shadow-under"
 				} transition-all duration-100`}
-				title="Dashboard page"
+				aria-label="dashboard page"
 			>
 				<FaDesktop />
 			</Link>
@@ -38,13 +38,13 @@ function MobileNav() {
 						? "text-accent shadow-under"
 						: "hover:text-accent hover:shadow-under"
 				} transition-all duration-100`}
-				title="Account settings page"
+				aria-label="account settings page"
 			>
 				<FaCog />
 			</Link>
 			<button
 				className="flex-1 flex flex-col justify-center items-center py-6 shadow-hidden hover:bg-slate-100 hover:text-accent hover:shadow-under transition-all duration-100"
-				title="Logout"
+				aria-label="log out"
 			>
 				<FaDoorOpen />
 			</button>

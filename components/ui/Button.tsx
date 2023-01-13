@@ -7,7 +7,7 @@ type ButtonProps = {
 	clickHandler?: MouseEventHandler<HTMLButtonElement>;
 	isLoading?: boolean;
 	disabled?: boolean;
-	title: string;
+	ariaLabel: string;
 	children?: ReactNode;
 };
 
@@ -17,7 +17,7 @@ export function Button({
 	clickHandler = () => {},
 	isLoading = false,
 	disabled = false,
-	title,
+	ariaLabel,
 	children
 }: ButtonProps) {
 	return (
@@ -30,7 +30,7 @@ export function Button({
 					: "bg-white text-black hover:bg-slate-100 hover:text-accent disabled:bg-slate-100 disabled:text-slate-400 disabled:hover:text-slate-400"
 			} transition-colors duration-100`}
 			disabled={disabled || isLoading === true}
-			title={title}
+			aria-label-label={ariaLabel}
 		>
 			{children}
 		</button>
@@ -40,11 +40,11 @@ export function Button({
 type LinkButtonProps = {
 	color?: "primary" | "secondary";
 	href: string;
-	title: string;
+	ariaLabel: string;
 	children?: ReactNode;
 };
 
-export function LinkButton({ color = "primary", href, title, children }: LinkButtonProps) {
+export function LinkButton({ color = "primary", href, ariaLabel, children }: LinkButtonProps) {
 	return (
 		<Link
 			href={href}
@@ -53,7 +53,7 @@ export function LinkButton({ color = "primary", href, title, children }: LinkBut
 					? "solid-box-shadow bg-black text-white hover:text-accent"
 					: "bg-white text-black hover:bg-slate-100 hover:text-accent"
 			} transition-colors duration-100`}
-			title={title}
+			aria-label-label={ariaLabel}
 		>
 			{children}
 		</Link>
