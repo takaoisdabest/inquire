@@ -30,7 +30,7 @@ export function Button({
 					: "bg-white text-black hover:bg-slate-100 hover:text-accent disabled:bg-slate-100 disabled:text-slate-400 disabled:hover:text-slate-400"
 			} transition-colors duration-100`}
 			disabled={disabled || isLoading === true}
-			aria-label-label={ariaLabel}
+			aria-label={ariaLabel}
 		>
 			{children}
 		</button>
@@ -53,7 +53,7 @@ export function LinkButton({ color = "primary", href, ariaLabel, children }: Lin
 					? "solid-box-shadow bg-black text-white hover:text-accent"
 					: "bg-white text-black hover:bg-slate-100 hover:text-accent"
 			} transition-colors duration-100`}
-			aria-label-label={ariaLabel}
+			aria-label={ariaLabel}
 		>
 			{children}
 		</Link>

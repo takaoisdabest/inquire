@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				<Link
 					href="/"
 					className="solid-text-shadow font-righteous font-bold text-2xl md:text-4xl"
-					aria-label-label="home page"
+					aria-labe="home page"
 				>
 					inquire
 				</Link>
@@ -45,14 +45,14 @@ export default function App({ Component, pageProps }: AppProps) {
 						<Link
 							href="/u/name/dashboard"
 							className="font-mono font-bold hover:underline"
-							aria-label-label="dashboard page"
+							aria-label="dashboard page"
 						>
 							dashboard
 						</Link>
 						<Link
 							href="/u/name/settings"
 							className="font-mono font-bold hover:underline"
-							aria-label-label="account settings page"
+							aria-label="account settings page"
 						>
 							settings
 						</Link>
@@ -60,13 +60,13 @@ export default function App({ Component, pageProps }: AppProps) {
 					</div>
 				) : (
 					<div className="hidden gap-4 items-center md:flex">
-						<Link href="/login" className="font-mono font-bold hover:underline" aria-label-label="log in">
+						<Link href="/login" className="font-mono font-bold hover:underline" aria-label="log in">
 							login
 						</Link>
 						<Link
 							href="/signup"
 							className="solid-box-shadow font-mono font-bold bg-black text-white hover:text-accent p-2"
-							aria-label-label="sign up"
+							aria-label="sign up"
 						>
 							SIGN UP FREE
 						</Link>
@@ -82,7 +82,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				<Link
 					href="/login"
 					className="flex justify-center items-center bg-accent text-white p-4 font-mono font-bold text-lg hover:underline md:hidden"
-					aria-label-label="log in"
+					aria-label="log in"
 				>
 					Log in to start creating
 				</Link>
