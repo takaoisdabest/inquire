@@ -10,7 +10,7 @@ function MobileNav() {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
 
 	return (
-		<nav className="fixed w-full top-[86.7vh] flex items-stretch border-t-[1px] text-xl md:hidden">
+		<nav className="sticky bottom-0 w-full flex items-stretch border-t-[1px] text-xl bg-white shadow-top md:hidden">
 			<Link
 				href="/"
 				className={`flex-1 flex flex-col justify-center items-center py-6 shadow-hidden hover:bg-slate-100 ${
