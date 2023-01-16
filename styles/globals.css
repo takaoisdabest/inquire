@@ -11,6 +11,7 @@
 
 :root {
 	--color-accent: #6c63ff;
+	--color-danger: #dc2626;
 }
 
 * {
@@ -20,7 +21,6 @@
 html,
 body {
 	max-width: 100vw;
-	overflow-x: hidden;
 	padding: 0;
 	margin: 0;
 }
@@ -41,6 +41,16 @@ body {
 	-webkit-box-shadow: -5px 5px 0px 0px var(--color-accent);
 	-moz-box-shadow: -5px 5px 0px 0px var(--color-accent);
 	box-shadow: -5px 5px 0px 0px var(--color-accent);
+}
+
+.solid-box-shadow-danger {
+	transition: all 0.1s linear;
+}
+.solid-box-shadow-danger:hover {
+	transition: all 0.1s linear;
+	-webkit-box-shadow: -5px 5px 0px 0px var(--color-danger);
+	-moz-box-shadow: -5px 5px 0px 0px var(--color-danger);
+	box-shadow: -5px 5px 0px 0px var(--color-danger);
 }
 
 .input-box-shadow {
