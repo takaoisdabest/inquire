@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { MouseEventHandler, ReactNode } from "react";
-import { useState } from "react";
+import { MouseEvent, ReactNode } from "react";
 
 type ButtonProps = {
 	type?: "button" | "submit";
 	color?: "primary" | "secondary" | "danger";
-	clickHandler?: MouseEventHandler<HTMLButtonElement>;
+	clickHandler?: (event: MouseEvent<HTMLButtonElement>) => void;
 	isLoading?: boolean;
 	disabled?: boolean;
 	ariaLabel: string;
