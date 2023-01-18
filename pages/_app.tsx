@@ -4,12 +4,12 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 // Components
-import MobileNav from "../components/ui/MobileNav";
+import MobileNav from "../components/layouts/MobileNav";
 import { Button } from "../components/ui/Button";
 
 export default function App({ Component, pageProps }: AppProps) {
 	const [showNavbarShadow, setShowNavbarShadow] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 
 	const toggleNavbarShadow = () => {
 		if (window.pageYOffset > 0) {
@@ -29,14 +29,14 @@ export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<div className="flex flex-col min-h-screen">
 			<nav
-				className={`fixed w-full flex justify-center items-center p-4 ${
+				className={`z-10 fixed w-full flex justify-center items-center p-4 ${
 					showNavbarShadow ? "drop-shadow-md" : ""
 				} bg-white md:px-6 md:justify-between`}
 			>
 				<Link
 					href="/"
 					className="solid-text-shadow font-righteous font-bold text-2xl md:text-4xl"
-					aria-labe="home page"
+					aria-label="home page"
 				>
 					inquire
 				</Link>
@@ -47,16 +47,16 @@ export default function App({ Component, pageProps }: AppProps) {
 							className="font-mono font-bold hover:underline"
 							aria-label="dashboard page"
 						>
-							dashboard
+							Dashboard
 						</Link>
 						<Link
 							href="/u/name/settings"
 							className="font-mono font-bold hover:underline"
 							aria-label="account settings page"
 						>
-							settings
+							Settings
 						</Link>
-						<Button ariaLabel="log out">logout</Button>
+						<Button ariaLabel="log out">Logout</Button>
 					</div>
 				) : (
 					<div className="hidden gap-4 items-center md:flex">
