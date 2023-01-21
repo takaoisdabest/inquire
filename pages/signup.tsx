@@ -16,8 +16,9 @@ export default function login() {
 		mode: "onChange"
 	});
 	const [isVisible, setIsVisible] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 
-	const onSubmit = (data: UserSignUp) => {
+	const onSubmit = async (data: UserSignUp) => {
 		console.log(data);
 	};
 
@@ -53,12 +54,7 @@ export default function login() {
 					/>
 
 					<div className="w-full flex flex-col gap-4 justify-center items-stretch md:flex-row-reverse">
-						<Button
-							type="submit"
-							color="primary"
-							clickHandler={() => console.log(formState)}
-							ariaLabel="sign up"
-						>
+						<Button type="submit" color="primary" ariaLabel="sign up" isLoading={isLoading}>
 							Sign Up
 						</Button>
 						<LinkButton color="secondary" href="/login" ariaLabel="login page">
