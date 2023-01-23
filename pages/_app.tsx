@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import NextNProgress from "nextjs-progressbar";
 
 // Components
 import MobileNav from "../components/layouts/MobileNav";
@@ -73,6 +74,8 @@ export default function App({ Component, pageProps }: AppProps) {
 					</div>
 				)}
 			</nav>
+
+			<NextNProgress color="#6c63ff" />
 
 			<Component {...pageProps} />
 
