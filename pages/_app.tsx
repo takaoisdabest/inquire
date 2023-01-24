@@ -75,7 +75,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				)}
 			</nav>
 
-			<NextNProgress color="#6c63ff" />
+			<NextNProgress color="#6c63ff" options={{ showSpinner: false }} />
 
 			<Component {...pageProps} />
 
