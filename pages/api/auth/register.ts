@@ -1,8 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hashSync, genSaltSync } from "bcryptjs";
+import { Prisma } from "@prisma/client";
+import jwt from "jsonwebtoken";
 
 import { prisma } from "../../../db/db";
-import { Prisma } from "@prisma/client";
+import generateAccessToken from "../../../lib/generate-token";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
 	// Only allow POST requests
@@ -23,7 +25,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 	if (name.length > 20) {
 		res.status(400).json({ code: 1, message: "Name can't be longer than 20 characters" });
 	}
-	if (!email || !emailPattern.test(email)) {
+	if (!email || emailPattern.test(email)) {
 		res.status(400).json({ code: 2, message: "Invalid email" });
 	}
 	if (!password || password.length < 8) {
@@ -38,9 +40,14 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 	const hashedPassword = hashSync(password, salt);
 
 	try {
+		// Creat user
 		const user = await prisma.user.create({ data: { name, email, password: hashedPassword } });
+		console.log(user);
 
-		res.json({ isLoggedIn: true, id: user.id, name: user.name, email: user.email });
+		// Generate JWT
+		const token = generateAccessToken(user.id);
+
+		res.json({ isLoggedIn: true, token, id: user.id, name: user.name, email: user.email, verified: user.verified });
 	} catch (error) {
 		// If email already exists in the databes
 		if (error instanceof Prisma.PrismaClientKnownRequestError) {
