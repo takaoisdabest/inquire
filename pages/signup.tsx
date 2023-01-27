@@ -2,24 +2,63 @@ import Head from "next/head";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios, { AxiosError } from "axios";
 
 // Types
 import { UserSignUp, UserSignUpSchema } from "../types/Credentials";
+import { ServerErrorData } from "../types/ServerErrorData";
 
 // Components
 import { EmailInput, PasswordInput, ConfirmPasswordInput, NameInput } from "../components/ui/Input";
 import { Button, LinkButton } from "../components/ui/Button";
+import { User } from "../types/User";
 
 export default function login() {
-	const { register, handleSubmit, formState } = useForm<UserSignUp>({
+	const { register, handleSubmit, formState, setError } = useForm<UserSignUp>({
 		resolver: zodResolver(UserSignUpSchema),
 		mode: "onChange"
 	});
 	const [isVisible, setIsVisible] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
 
-	const onSubmit = async (data: UserSignUp) => {
-		console.log(data);
+	const onSubmit = async (userData: UserSignUp) => {
+		setIsLoading(true);
+
+		try {
+			const res = await axios.post<User>("/api/auth/register", userData);
+			console.log(res.data);
+			setIsLoading(false);
+		} catch (error) {
+			setIsLoading(false);
+			if (axios.isAxiosError(error)) {
+				if (error.response?.status === 500) {
+					console.log("server error");
+				}
+
+				switch (error.response?.data.code) {
+					case "P2002":
+						setError("email", { type: "min", message: error.response?.data.message });
+						break;
+					case 0:
+						setError("name", { type: "required", message: error.response?.data.message });
+						break;
+					case 1:
+						setError("name", { type: "max", message: error.response?.data.message });
+						break;
+					case 2:
+						setError("email", { type: "min", message: error.response?.data.message });
+						break;
+					case 3:
+						setError("password", { type: "min", message: error.response?.data.message });
+						break;
+					case 4:
+						setError("confirmPassword", { type: "min", message: error.response?.data.message });
+						break;
+				}
+			}
+		}
+
+		setIsLoading(false);
 	};
 
 	const passwordToggler = () => {
