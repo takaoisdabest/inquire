@@ -42,12 +42,11 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 	try {
 		// Creat user
 		const user = await prisma.user.create({ data: { name, email, password: hashedPassword } });
-		console.log(user);
 
 		// Generate JWT
 		const token = generateAccessToken(user.id);
 
-		res.json({ isLoggedIn: true, token, id: user.id, name: user.name, email: user.email, verified: user.verified });
+		res.json({ isLoggedIn: true, token, name: user.name, verified: user.verified });
 	} catch (error) {
 		// If email already exists in the databes
 		if (error instanceof Prisma.PrismaClientKnownRequestError) {
