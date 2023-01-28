@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { hashSync, genSaltSync } from "bcryptjs";
 import { Prisma } from "@prisma/client";
-import jwt from "jsonwebtoken";
 
 import { prisma } from "../../../db/db";
 import generateAccessToken from "../../../lib/generate-token";
