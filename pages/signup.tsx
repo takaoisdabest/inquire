@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import { signIn } from "next-auth/react";
 
 // Types
 import { UserSignUp, UserSignUpSchema } from "../types/Credentials";
@@ -12,7 +13,7 @@ import { EmailInput, PasswordInput, ConfirmPasswordInput, NameInput } from "../c
 import { Button, LinkButton } from "../components/ui/Button";
 import { User } from "../types/User";
 
-export default function signup() {
+export default function SignUp() {
 	const { register, handleSubmit, formState, setError } = useForm<UserSignUp>({
 		resolver: zodResolver(UserSignUpSchema),
 		mode: "onChange"
@@ -25,7 +26,7 @@ export default function signup() {
 
 		try {
 			const res = await axios.post<User>("/api/auth/register", userData);
-			console.log("User: ", res.data);
+			signIn("credentials", res.data);
 			setIsLoading(false);
 		} catch (error) {
 			setIsLoading(false);

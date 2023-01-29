@@ -4,13 +4,13 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Types
-import { UserLogin, UserLoginSchema } from "../types/Credentials";
+import { UserLogin, UserLoginSchema } from "../../types/Credentials";
 
 // Components
-import { EmailInput, PasswordInput } from "../components/ui/Input";
-import { Button, LinkButton } from "../components/ui/Button";
+import { EmailInput, PasswordInput } from "../../components/ui/Input";
+import { Button, LinkButton } from "../../components/ui/Button";
 
-export default function login() {
+export default function LogIn() {
 	const { register, handleSubmit, formState } = useForm<UserLogin>({
 		resolver: zodResolver(UserLoginSchema),
 		mode: "onChange"
