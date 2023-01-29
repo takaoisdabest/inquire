@@ -2,18 +2,17 @@ import Head from "next/head";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 // Types
 import { UserSignUp, UserSignUpSchema } from "../types/Credentials";
-import { ServerErrorData } from "../types/ServerErrorData";
 
 // Components
 import { EmailInput, PasswordInput, ConfirmPasswordInput, NameInput } from "../components/ui/Input";
 import { Button, LinkButton } from "../components/ui/Button";
 import { User } from "../types/User";
 
-export default function login() {
+export default function signup() {
 	const { register, handleSubmit, formState, setError } = useForm<UserSignUp>({
 		resolver: zodResolver(UserSignUpSchema),
 		mode: "onChange"
@@ -26,7 +25,7 @@ export default function login() {
 
 		try {
 			const res = await axios.post<User>("/api/auth/register", userData);
-			console.log(res.data);
+			console.log("User: ", res.data);
 			setIsLoading(false);
 		} catch (error) {
 			setIsLoading(false);

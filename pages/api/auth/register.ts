@@ -3,7 +3,6 @@ import { hashSync, genSaltSync } from "bcryptjs";
 import { Prisma } from "@prisma/client";
 
 import { prisma } from "../../../db/db";
-import generateAccessToken from "../../../lib/generate-token";
 
 export default async function handle(req: NextApiRequest, res: NextApiResponse) {
 	// Only allow POST requests
@@ -42,10 +41,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 		// Creat user
 		const user = await prisma.user.create({ data: { name, email, password: hashedPassword } });
 
-		// Generate JWT
-		const token = generateAccessToken(user.id);
-
-		res.json({ isLoggedIn: true, token, name: user.name, verified: user.verified });
+		res.json({ isLoggedIn: true, name: user.name, verified: user.verified });
 	} catch (error) {
 		// If email already exists in the databes
 		if (error instanceof Prisma.PrismaClientKnownRequestError) {

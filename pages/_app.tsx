@@ -9,8 +9,8 @@ import MobileNav from "../components/layouts/MobileNav";
 import { Button } from "../components/ui/Button";
 
 export default function App({ Component, pageProps }: AppProps) {
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [showNavbarShadow, setShowNavbarShadow] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	const toggleNavbarShadow = () => {
 		if (window.pageYOffset > 0) {
@@ -57,7 +57,9 @@ export default function App({ Component, pageProps }: AppProps) {
 						>
 							Settings
 						</Link>
-						<Button ariaLabel="log out">Logout</Button>
+						<Button ariaLabel="log out">
+							Logout
+						</Button>
 					</div>
 				) : (
 					<div className="hidden gap-4 items-center md:flex">
