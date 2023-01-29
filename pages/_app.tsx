@@ -11,7 +11,6 @@ import { Button } from "../components/ui/Button";
 
 export default function App({ Component, pageProps }: AppProps) {
 	const [showNavbarShadow, setShowNavbarShadow] = useState(false);
-	const [session, setIsLoggedIn] = useState(false);
 
 	const toggleNavbarShadow = () => {
 		if (window.pageYOffset > 0) {
@@ -43,7 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					>
 						inquire
 					</Link>
-					{session ? (
+					{pageProps.session ? (
 						<div className="hidden gap-4 items-center md:flex">
 							<Link
 								href="/u/name/dashboard"
@@ -83,7 +82,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 				<Component {...pageProps} />
 
-				{session ? (
+				{pageProps.session ? (
 					<MobileNav />
 				) : (
 					<Link
