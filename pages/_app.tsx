@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import NextNProgress from "nextjs-progressbar";
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider, signOut } from "next-auth/react";
 
 // Components
 import MobileNav from "../components/layouts/MobileNav";
@@ -11,7 +11,7 @@ import { Button } from "../components/ui/Button";
 
 export default function App({ Component, pageProps }: AppProps) {
 	const [showNavbarShadow, setShowNavbarShadow] = useState(false);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [session, setIsLoggedIn] = useState(false);
 
 	const toggleNavbarShadow = () => {
 		if (window.pageYOffset > 0) {
@@ -43,7 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
 					>
 						inquire
 					</Link>
-					{isLoggedIn ? (
+					{session ? (
 						<div className="hidden gap-4 items-center md:flex">
 							<Link
 								href="/u/name/dashboard"
@@ -59,7 +59,9 @@ export default function App({ Component, pageProps }: AppProps) {
 							>
 								Settings
 							</Link>
-							<Button ariaLabel="log out">Logout</Button>
+							<Button ariaLabel="log out" clickHandler={() => signOut()}>
+								Logout
+							</Button>
 						</div>
 					) : (
 						<div className="hidden gap-4 items-center md:flex">
@@ -81,7 +83,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
 				<Component {...pageProps} />
 
-				{isLoggedIn ? (
+				{session ? (
 					<MobileNav />
 				) : (
 					<Link
