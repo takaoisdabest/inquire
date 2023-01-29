@@ -41,7 +41,7 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
 		// Creat user
 		const user = await prisma.user.create({ data: { name, email, password: hashedPassword } });
 
-		res.json({ isLoggedIn: true, name: user.name, verified: user.verified });
+		res.json({ id: user.id, name: user.name, verified: user.verified });
 	} catch (error) {
 		// If email already exists in the databes
 		if (error instanceof Prisma.PrismaClientKnownRequestError) {
